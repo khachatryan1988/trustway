@@ -2,6 +2,7 @@ from django.db import models
 
 class SiteSettings(models.Model):
     logo_text = models.CharField(max_length=100, default="Trust Way")
+    logo_image = models.ImageField(upload_to="site/", blank=True, null=True)
     phone_main = models.CharField(max_length=50, default="+374 33 787790")
     phone_second = models.CharField(max_length=50, default="+374 043 00 33 59", blank=True)
     phone_third = models.CharField(max_length=50, default="+374 95 608020", blank=True)

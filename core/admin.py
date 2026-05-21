@@ -4,7 +4,7 @@ from .models import SiteSettings, PageContent, Stat, Service, RoutePoint, Partne
 @admin.register(SiteSettings)
 class SiteSettingsAdmin(admin.ModelAdmin):
     fieldsets = (
-        ("Brand", {"fields": ("logo_text",)}),
+        ("Brand", {"fields": ("logo_text", "logo_image")}),
         ("Contacts", {"fields": ("phone_main", "phone_second", "phone_third", "email", "whatsapp_number", "telegram_link")}),
         ("Address", {"fields": ("address_hy", "address_ru", "address_en")}),
         ("Footer", {"fields": ("footer_text_hy", "footer_text_ru", "footer_text_en")}),
