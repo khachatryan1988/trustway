@@ -4,6 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}Trust Way{% endblock %}</title>
+  {% if site.favicon %}
+  <link rel="icon" type="image/png" sizes="512x512" href="{{ site.favicon.url }}?v=4">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ site.favicon.url }}?v=4">
+  {% else %}
+  <link rel="icon" type="image/png" sizes="512x512" href="{{ static('img/favicon.png') }}?v=4">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ static('img/favicon.png') }}?v=4">
+  {% endif %}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,7 +49,14 @@
   <footer>
     <div class="footer-inner">
       <div>
-        <div class="brand footer-brand"><span class="brand-mark">TW</span><span>{{ site.logo_text }}</span></div>
+        <div class="brand footer-brand">
+          {% if site.logo_image %}
+          <img src="{{ site.logo_image.url }}" alt="{{ site.logo_text }}" class="brand-logo">
+          {% else %}
+          <span class="brand-mark">TW</span>
+          {% endif %}
+          <span>{{ site.logo_text }}</span>
+        </div>
         <p>{{ site['footer_text_' ~ lang] if false else t.footer_text }}</p>
       </div>
       <div>
