@@ -1,0 +1,20 @@
+<svg viewBox="0 0 1200 620" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="land" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#3b82f6" stop-opacity=".55"/>
+            <stop offset="1" stop-color="#60a5fa" stop-opacity=".25"/>
+        </linearGradient>
+    </defs>
+
+    <rect width="1200" height="620" fill="none"/>
+
+    <path fill="url(#land)" d="M171 177l35-31 58-6 43 20 42-11 37 17 18 39-17 34 25 28-17 31-51 9-39-18-38 15-45-19-28-35-36-9-18-34z"/>
+    <path fill="url(#land)" d="M444 136l49-26 73 8 36 29 63-3 45 25 7 48-30 28 18 41-45 35-69-7-43 22-58-20-28-44-52-12-19-55z"/>
+    <path fill="url(#land)" d="M725 172l58-36 95 4 74 32 74-12 66 35 27 65-37 57 30 51-57 48-83-8-64 37-91-24-51-58-71-12-35-72z"/>
+    <path fill="url(#land)" d="M536 364l38 10 22 34-8 42 27 34-22 42-54 15-44-28-18-53 17-50z"/>
+    <path fill="url(#land)" d="M831 443l39-24 59 10 32 35-15 44-46 28-55-11-29-39z"/>
+    <path fill="url(#land)" d="M1020 448l58 18 44 39-17 42-55 15-54-31-20-47z"/>
+
+    <path d="M80 312c135-84 255-89 361-15s204 73 294-4 203-88 337-9"
+          fill="none" stroke="#60a5fa" stroke-width="4" stroke-dasharray="14 14" opacity=".45"/>
+</svg>

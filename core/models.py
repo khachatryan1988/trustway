@@ -81,6 +81,10 @@ class RoutePoint(models.Model):
     name_hy = models.CharField(max_length=100)
     name_ru = models.CharField(max_length=100)
     name_en = models.CharField(max_length=100)
+
+    lat = models.FloatField(default=40.1772)
+    lng = models.FloatField(default=44.5035)
+
     x = models.FloatField(default=500)
     y = models.FloatField(default=250)
     size = models.PositiveIntegerField(default=7)

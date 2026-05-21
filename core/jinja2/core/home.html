@@ -58,18 +58,24 @@
   <div class="section-inner">
     <div class="sec-tag">{{ t.section_routes }}</div>
     <h2 class="sec-title">{{ t.section_routes }}</h2>
-    <div class="map-wrap">
-      <svg viewBox="0 0 1000 500" id="route-map">
-        <path d="M80 250 C260 120, 420 390, 600 220 S820 110, 940 250" class="route-line"/>
-        {% for r in routes %}
-        <circle class="route-dot" cx="{{ r.x }}" cy="{{ r.y }}" r="{{ r.size }}"
-          data-name="{{ r.name_ru }}" data-name-hy="{{ r.name_hy }}" data-name-en="{{ r.name_en }}"></circle>
-        {% endfor %}
-      </svg>
-      <div id="map-tooltip" class="map-tooltip"></div>
-    </div>
+
+    <div id="leaflet-route-map" class="leaflet-route-map"></div>
   </div>
 </section>
+
+<script>
+  window.routePoints = [
+    {% for r in routes %}
+    {
+      lat: {{ r.lat }},
+      lng: {{ r.lng }},
+      name_hy: "{{ r.name_hy }}",
+      name_ru: "{{ r.name_ru }}",
+      name_en: "{{ r.name_en }}"
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ];
+</script>
 
 <section class="section">
   <div class="section-inner">
