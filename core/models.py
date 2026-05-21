@@ -36,7 +36,8 @@ class PageContent(models.Model):
     body_ru = models.TextField(blank=True)
     body_en = models.TextField(blank=True)
 
-    image = models.ImageField(upload_to="pages/", blank=True, null=True)
+    hero_image = models.ImageField(upload_to="pages/hero/", blank=True, null=True)
+    content_image = models.ImageField(upload_to="pages/content/", blank=True, null=True)
 
     def __str__(self):
         return self.key

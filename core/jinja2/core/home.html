@@ -1,23 +1,30 @@
 {% extends 'core/base.html' %}
 {% block title %}Trust Way — {{ t.nav_home }}{% endblock %}
 {% block content %}
-<section class="hero">
-  <div class="hero-bg"></div>
+<section class="hero hero-bg-image"
+         {% if page and page.hero_image %}
+         style="background-image: linear-gradient(90deg, rgba(6,14,36,.94), rgba(6,14,36,.70), rgba(6,14,36,.35)), url('{{ page.hero_image.url }}');"
+         {% endif %}
+>
   <div class="hero-inner">
     <div class="hero-copy">
       <div class="hero-tag"><i class="ti ti-world"></i>{{ t.hero_tag }}</div>
+
       <h1>{{ t.hero_h1a }}<span class="accent">{{ t.hero_h1b }}</span></h1>
+
       <p>{{ page.subtitle_hy if lang == 'hy' and page else page.subtitle_ru if lang == 'ru' and page else page.subtitle_en if page else t.hero_desc }}</p>
+
       <div class="hero-actions">
         <a class="btn-glow" href="{{ url('services') }}">{{ t.btn_services }}</a>
         <a class="btn-ghost" href="{{ url('contacts') }}">{{ t.btn_contact }}</a>
       </div>
     </div>
+
     <div class="hero-stats">
       {% for s in stats %}
       <div class="hstat">
         <i class="ti {{ s.icon }}"></i>
-        <div class="hstat-num" data-counter="{{ s.number|replace('+','')|replace('/7','') }}">{{ s.number }}</div>
+        <div class="hstat-num">{{ s.number }}</div>
         <div class="hstat-lbl">{{ s.label_hy if lang == 'hy' else s.label_ru if lang == 'ru' else s.label_en }}</div>
       </div>
       {% endfor %}

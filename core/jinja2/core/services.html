@@ -1,10 +1,20 @@
 {% extends 'core/base.html' %}
 {% block title %}Trust Way — {{ t.nav_services }}{% endblock %}
 {% block content %}
-<section class="page-hero">
-  <div class="breadcrumb"><a href="{{ url('home') }}">{{ t.nav_home }}</a> / {{ t.nav_services }}</div>
-  <h1>{{ page.title_hy if lang == 'hy' and page else page.title_ru if lang == 'ru' and page else page.title_en if page else t.nav_services }}</h1>
-  <p>{{ page.subtitle_hy if lang == 'hy' and page else page.subtitle_ru if lang == 'ru' and page else page.subtitle_en if page else t.services_hero_desc }}</p>
+<section class="page-hero page-hero-bg-image"
+         {% if page and page.hero_image %}
+         style="background-image: linear-gradient(90deg, rgba(6,14,36,.94), rgba(6,14,36,.70), rgba(6,14,36,.35)), url('{{ page.hero_image.url }}');"
+         {% endif %}
+>
+  <div class="page-hero-content">
+    <div class="breadcrumb">
+      <a href="{{ url('home') }}">{{ t.nav_home }}</a> / {{ t.nav_services }}
+    </div>
+
+    <h1>{{ page.title_hy if lang == 'hy' and page else page.title_ru if lang == 'ru' and page else page.title_en if page else t.nav_services }}</h1>
+
+    <p>{{ page.subtitle_hy if lang == 'hy' and page else page.subtitle_ru if lang == 'ru' and page else page.subtitle_en if page else t.services_hero_desc }}</p>
+  </div>
 </section>
 
 <section class="section">

@@ -1,3 +1,4 @@
+from django.utils.html import format_html
 from django.contrib import admin
 from .models import SiteSettings, PageContent, Stat, Service, RoutePoint, Partner, ValueItem, WorkStep, ContactRequest, FooterLink
 
@@ -12,14 +13,44 @@ class SiteSettingsAdmin(admin.ModelAdmin):
 
 @admin.register(PageContent)
 class PageContentAdmin(admin.ModelAdmin):
-    list_display = ("key", "title_ru", "title_hy", "title_en")
+    list_display = ("key", "title_ru", "title_hy", "title_en", "hero_preview", "content_preview")
     search_fields = ("key", "title_ru", "title_hy", "title_en")
+    readonly_fields = ("hero_preview", "content_preview")
+
     fieldsets = (
-        ("Page", {"fields": ("key", "image")}),
+        ("Page", {
+            "fields": (
+                "key",
+                "hero_image",
+                "hero_preview",
+                "content_image",
+                "content_preview",
+            )
+        }),
         ("HY", {"fields": ("title_hy", "subtitle_hy", "body_hy")}),
         ("RU", {"fields": ("title_ru", "subtitle_ru", "body_ru")}),
         ("EN", {"fields": ("title_en", "subtitle_en", "body_en")}),
     )
+
+    def hero_preview(self, obj):
+        if obj and obj.hero_image:
+            return format_html(
+                '<img src="{}" style="max-width:260px; max-height:140px; border-radius:10px; border:1px solid #444;" />',
+                obj.hero_image.url
+            )
+        return "No hero image"
+
+    hero_preview.short_description = "Hero image preview"
+
+    def content_preview(self, obj):
+        if obj and obj.content_image:
+            return format_html(
+                '<img src="{}" style="max-width:260px; max-height:140px; border-radius:10px; border:1px solid #444;" />',
+                obj.content_image.url
+            )
+        return "No content image"
+
+    content_preview.short_description = "Content image preview"
 
 @admin.register(Stat)
 class StatAdmin(admin.ModelAdmin):

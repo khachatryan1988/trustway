@@ -25,3 +25,123 @@
   object-position:center;
   border-radius:var(--r2);
 }
+.page-hero-with-image{
+  display:grid;
+  grid-template-columns: 1fr 420px;
+  align-items:center;
+  gap:40px;
+  min-height:420px;
+}
+
+.page-hero-content{
+  max-width:720px;
+}
+
+.page-hero-image-wrap{
+  width:100%;
+  height:260px;
+  border-radius:24px;
+  overflow:hidden;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.04);
+  box-shadow:0 24px 80px rgba(0,0,0,.28);
+}
+
+.page-hero-image{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+}
+
+@media(max-width:900px){
+  .page-hero-with-image{
+    grid-template-columns:1fr;
+    min-height:auto;
+  }
+
+  .page-hero-image-wrap{
+    height:220px;
+  }
+}
+.page-hero-bg-image{
+  min-height:520px;
+  padding:170px 7% 90px;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  display:flex;
+  align-items:center;
+}
+
+.page-hero-bg-image .page-hero-content{
+  max-width:760px;
+}
+
+.page-hero-bg-image h1{
+  color:#ffffff;
+  text-shadow:0 8px 30px rgba(0,0,0,.45);
+}
+
+.page-hero-bg-image p,
+.page-hero-bg-image .breadcrumb{
+  color:#c7d6f5;
+}
+/* Full hero background image from admin */
+.hero-bg-image,
+.page-hero-bg-image{
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+
+.hero-bg-image{
+  min-height:680px;
+  padding-top:150px;
+  padding-bottom:90px;
+  display:flex;
+  align-items:center;
+}
+
+.hero-bg-image .hero-inner{
+  width:100%;
+}
+
+.page-hero-bg-image{
+  min-height:520px;
+  padding:170px 7% 90px;
+  display:flex;
+  align-items:center;
+}
+
+.page-hero-bg-image .page-hero-content{
+  max-width:760px;
+}
+
+.hero-bg-image h1,
+.page-hero-bg-image h1{
+  color:#ffffff;
+  text-shadow:0 8px 30px rgba(0,0,0,.45);
+}
+
+.hero-bg-image p,
+.hero-bg-image .eyebrow,
+.page-hero-bg-image p,
+.page-hero-bg-image .breadcrumb{
+  color:#d6e2ff;
+  text-shadow:0 6px 22px rgba(0,0,0,.45);
+}
+
+@media(max-width:900px){
+  .hero-bg-image{
+    min-height:auto;
+    padding-top:130px;
+    padding-bottom:70px;
+  }
+
+  .page-hero-bg-image{
+    min-height:420px;
+    padding:140px 6% 70px;
+  }
+}
