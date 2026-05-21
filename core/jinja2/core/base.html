@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Trust Way{% endblock %}</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ static('css/main.css') }}">
+  {% block meta %}{% endblock %}
+</head>
+<body>
+  <div class="lang-bar">
+    {% for code, label in languages %}
+      <a href="{{ url('set_lang', args=[code]) }}" class="lang-btn{{ ' active' if lang == code }}">{{ label }}</a>
+    {% endfor %}
+  </div>
+
+  <nav class="navbar solid" id="navbar">
+    <a href="{{ url('home') }}" class="brand"><span class="brand-mark">TW</span><span>{{ site.logo_text }}</span></a>
+    <button class="menu-btn" id="menu-btn"><i class="ti ti-menu-2"></i></button>
+    <ul class="nav-links" id="nav-links">
+      <li><a class="{{ 'active' if active_page == 'home' }}" href="{{ url('home') }}">{{ t.nav_home }}</a></li>
+      <li><a class="{{ 'active' if active_page == 'about' }}" href="{{ url('about') }}">{{ t.nav_about }}</a></li>
+      <li><a class="{{ 'active' if active_page == 'services' }}" href="{{ url('services') }}">{{ t.nav_services }}</a></li>
+      <li><a class="{{ 'active' if active_page == 'contacts' }}" href="{{ url('contacts') }}">{{ t.nav_contacts }}</a></li>
+    </ul>
+    <a class="nav-cta" href="{{ url('contacts') }}">{{ t.btn_contact }}</a>
+  </nav>
+
+  {% block content %}{% endblock %}
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="brand footer-brand"><span class="brand-mark">TW</span><span>{{ site.logo_text }}</span></div>
+        <p>{{ site['footer_text_' ~ lang] if false else t.footer_text }}</p>
+      </div>
+      <div>
+        <h4>{{ t.nav_home }}</h4>
+
+        {% for link in footer_links %}
+        <a href="{{ link.url }}">
+          {{ link.title_hy if lang == 'hy' else link.title_ru if lang == 'ru' else link.title_en }}
+        </a>
+        {% endfor %}
+      </div>
+      <div>
+        <h4>{{ t.nav_contacts }}</h4>
+        <p>{{ site.phone_main }}</p>
+        <p>{{ site.email }}</p>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Trust Way LLC</div>
+  </footer>
+
+  <script src="{{ static('js/app.js') }}"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

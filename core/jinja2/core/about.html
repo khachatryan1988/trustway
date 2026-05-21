@@ -1,0 +1,34 @@
+{% extends 'core/base.html' %}
+{% block title %}Trust Way — {{ t.nav_about }}{% endblock %}
+{% block content %}
+<section class="page-hero">
+  <div class="breadcrumb"><a href="{{ url('home') }}">{{ t.nav_home }}</a> / {{ t.nav_about }}</div>
+  <h1>{{ page.title_hy if lang == 'hy' and page else page.title_ru if lang == 'ru' and page else page.title_en if page else t.nav_about }}</h1>
+  <p>{{ page.subtitle_hy if lang == 'hy' and page else page.subtitle_ru if lang == 'ru' and page else page.subtitle_en if page else t.about_hero_desc }}</p>
+</section>
+
+<section class="section">
+  <div class="section-inner about-grid">
+    <div class="about-visual"><div class="diamond-shape">TW</div></div>
+    <div class="about-text">
+      <p>{{ page.body_hy if lang == 'hy' and page else page.body_ru if lang == 'ru' and page else page.body_en if page else t.about_p1 }}</p>
+      <div class="values-grid">
+        {% for v in values %}
+        <div class="val-card">
+          <i class="ti {{ v.icon }}"></i>
+          <h3>{{ v.title_hy if lang == 'hy' else v.title_ru if lang == 'ru' else v.title_en }}</h3>
+          <p>{{ v.desc_hy if lang == 'hy' else v.desc_ru if lang == 'ru' else v.desc_en }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner jctrans-band">
+    <div><h2>{{ t.member_title }}</h2><p>{{ t.member_desc }}</p></div>
+    <div class="jctrans-logo">JCTRANS</div>
+  </div>
+</section>
+{% endblock %}

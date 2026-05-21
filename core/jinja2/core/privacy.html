@@ -1,0 +1,22 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Trust Way — {{ page.title_hy if lang == 'hy' else page.title_ru if lang == 'ru' else page.title_en }}{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+    <div class="breadcrumb">
+        <a href="{{ url('home') }}">{{ t.nav_home }}</a> /
+        {{ page.title_hy if lang == 'hy' else page.title_ru if lang == 'ru' else page.title_en }}
+    </div>
+
+    <h1>{{ page.title_hy if lang == 'hy' else page.title_ru if lang == 'ru' else page.title_en }}</h1>
+
+    <p>{{ page.subtitle_hy if lang == 'hy' else page.subtitle_ru if lang == 'ru' else page.subtitle_en }}</p>
+</section>
+
+<section class="section">
+    <div class="section-inner text-page">
+        {{ page.body_hy if lang == 'hy' else page.body_ru if lang == 'ru' else page.body_en }}
+    </div>
+</section>
+{% endblock %}

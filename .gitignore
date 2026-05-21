@@ -1,0 +1,106 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+
+# Virtual environment
+.venv/
+venv/
+env/
+ENV/
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+
+# Migrations cache
+# ВНИМАНИЕ: сами миграции обычно нужно хранить в git.
+# Поэтому НЕ игнорируем core/migrations/*.py
+# Игнорируем только cache:
+*/migrations/__pycache__/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# IDE / Editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Windows
+ehthumbs.db
+$RECYCLE.BIN/
+
+# Logs
+logs/
+*.log
+
+# Coverage / tests
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+.nox/
+
+# Build / dist
+build/
+dist/
+*.egg-info/
+
+# Pip / Python tools
+pip-wheel-metadata/
+Pipfile.lock
+poetry.lock
+
+# Node / frontend if added later
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Static collected files
+/staticfiles/
+
+# Uploaded files
+/media/
+
+# Backup files
+*.bak
+*.backup
+*.old
+*.tmp
+*.temp
+
+# Archives
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
+
+# SQLite
+*.sqlite3
+*.sqlite3-journal
+
+# Gunicorn / pid
+*.pid
+
+# Secrets / keys
+*.pem
+*.key
+*.crt

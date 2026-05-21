@@ -1,0 +1,86 @@
+{% extends 'core/base.html' %}
+{% block title %}Trust Way — {{ t.nav_home }}{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <div class="hero-tag"><i class="ti ti-world"></i>{{ t.hero_tag }}</div>
+      <h1>{{ t.hero_h1a }}<span class="accent">{{ t.hero_h1b }}</span></h1>
+      <p>{{ page.subtitle_hy if lang == 'hy' and page else page.subtitle_ru if lang == 'ru' and page else page.subtitle_en if page else t.hero_desc }}</p>
+      <div class="hero-actions">
+        <a class="btn-glow" href="{{ url('services') }}">{{ t.btn_services }}</a>
+        <a class="btn-ghost" href="{{ url('contacts') }}">{{ t.btn_contact }}</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      {% for s in stats %}
+      <div class="hstat">
+        <i class="ti {{ s.icon }}"></i>
+        <div class="hstat-num" data-counter="{{ s.number|replace('+','')|replace('/7','') }}">{{ s.number }}</div>
+        <div class="hstat-lbl">{{ s.label_hy if lang == 'hy' else s.label_ru if lang == 'ru' else s.label_en }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="stats-row">
+  {% for s in stats %}
+  <div class="stat-item"><div class="stat-num">{{ s.number }}</div><div class="stat-lbl">{{ s.label_hy if lang == 'hy' else s.label_ru if lang == 'ru' else s.label_en }}</div></div>
+  {% endfor %}
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="sec-tag">{{ t.section_services }}</div>
+    <h2 class="sec-title">{{ t.section_services }}</h2>
+    <div class="svcs-grid">
+      {% for s in services %}
+      <div class="svc-card">
+        <div class="svc-icon-wrap"><i class="ti {{ s.icon }}"></i></div>
+        <h3>{{ s.name_hy if lang == 'hy' else s.name_ru if lang == 'ru' else s.name_en }}</h3>
+        <p>{{ s.desc_hy if lang == 'hy' else s.desc_ru if lang == 'ru' else s.desc_en }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section map-section">
+  <div class="section-inner">
+    <div class="sec-tag">{{ t.section_routes }}</div>
+    <h2 class="sec-title">{{ t.section_routes }}</h2>
+    <div class="map-wrap">
+      <svg viewBox="0 0 1000 500" id="route-map">
+        <path d="M80 250 C260 120, 420 390, 600 220 S820 110, 940 250" class="route-line"/>
+        {% for r in routes %}
+        <circle class="route-dot" cx="{{ r.x }}" cy="{{ r.y }}" r="{{ r.size }}"
+          data-name="{{ r.name_ru }}" data-name-hy="{{ r.name_hy }}" data-name-en="{{ r.name_en }}"></circle>
+        {% endfor %}
+      </svg>
+      <div id="map-tooltip" class="map-tooltip"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="sec-tag">{{ t.section_partners }}</div>
+    <h2 class="sec-title">{{ t.section_partners }}</h2>
+    <div class="partners-grid">
+      {% for p in partners %}
+      <div class="partner-badge"><i class="ti {{ p.icon }}" style="color:{{ p.color }}"></i><span>{{ p.name }}</span></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="cta-band-inner">
+    <h2>{{ t.cta_title }}</h2>
+    <p>{{ t.cta_desc }}</p>
+    <a class="btn-glow" href="{{ url('contacts') }}">{{ t.btn_contact }}</a>
+  </div>
+</section>
+{% endblock %}

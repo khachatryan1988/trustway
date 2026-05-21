@@ -1,0 +1,42 @@
+{% extends 'core/base.html' %}
+{% block title %}Trust Way — {{ t.nav_services }}{% endblock %}
+{% block content %}
+<section class="page-hero">
+  <div class="breadcrumb"><a href="{{ url('home') }}">{{ t.nav_home }}</a> / {{ t.nav_services }}</div>
+  <h1>{{ page.title_hy if lang == 'hy' and page else page.title_ru if lang == 'ru' and page else page.title_en if page else t.nav_services }}</h1>
+  <p>{{ page.subtitle_hy if lang == 'hy' and page else page.subtitle_ru if lang == 'ru' and page else page.subtitle_en if page else t.services_hero_desc }}</p>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="svc-detail-grid">
+      {% for s in services_detail %}
+      <div class="svc-detail-card">
+        <div class="svc-d-icon"><i class="ti {{ s.icon }}"></i></div>
+        <h3>{{ s.name_hy if lang == 'hy' else s.name_ru if lang == 'ru' else s.name_en }}</h3>
+        <p>{{ s.desc_hy if lang == 'hy' else s.desc_ru if lang == 'ru' else s.desc_en }}</p>
+        <div class="svc-tags">
+          {% set tags = s.tags_hy.split(',') if lang == 'hy' else s.tags_ru.split(',') if lang == 'ru' else s.tags_en.split(',') %}
+          {% for tag in tags %}{% if tag.strip() %}<span>{{ tag.strip() }}</span>{% endif %}{% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section dark-section">
+  <div class="section-inner">
+    <h2 class="sec-title">{{ t.how_title }}</h2>
+    <div class="steps-grid">
+      {% for step in steps %}
+      <div class="step-card">
+        <div class="step-num">{{ step.num }}</div>
+        <h3>{{ step.name_hy if lang == 'hy' else step.name_ru if lang == 'ru' else step.name_en }}</h3>
+        <p>{{ step.desc_hy if lang == 'hy' else step.desc_ru if lang == 'ru' else step.desc_en }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}
