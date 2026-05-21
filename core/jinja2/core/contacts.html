@@ -1,37 +1,105 @@
 {% extends 'core/base.html' %}
+
 {% block title %}Trust Way — {{ t.nav_contacts }}{% endblock %}
+
 {% block content %}
-<section class="page-hero">
-  <div class="breadcrumb"><a href="{{ url('home') }}">{{ t.nav_home }}</a> / {{ t.nav_contacts }}</div>
-  <h1>{{ page.title_hy if lang == 'hy' and page else page.title_ru if lang == 'ru' and page else page.title_en if page else t.nav_contacts }}</h1>
-  <p>{{ page.subtitle_hy if lang == 'hy' and page else page.subtitle_ru if lang == 'ru' and page else page.subtitle_en if page else t.contacts_hero_desc }}</p>
+
+<section class="page-hero contact-hero">
+  <div class="contact-hero-text">
+    <div class="breadcrumb">
+      <a href="{{ url('home') }}">{{ t.nav_home }}</a> / {{ t.nav_contacts }}
+    </div>
+
+    <h1>
+      {{ page.title_hy if lang == 'hy' and page else page.title_ru if lang == 'ru' and page else page.title_en if page else t.nav_contacts }}
+    </h1>
+
+    <p>
+      {{ page.subtitle_hy if lang == 'hy' and page else page.subtitle_ru if lang == 'ru' and page else page.subtitle_en if page else t.contacts_hero_desc }}
+    </p>
+  </div>
+
+  <div class="contact-hero-map">
+    <iframe
+            src="https://www.google.com/maps?q=Yerevan%2C%20Ler%20Kamsar%2030%2F3&z=16&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
 </section>
 
 <section class="section">
   <div class="section-inner contacts-grid">
+
     <div class="contact-info">
-      <div class="cinfo-item"><div class="cinfo-icon"><i class="ti ti-map-pin"></i></div><div><h3>{{ t.address }}</h3><p>{{ site.address_hy if lang == 'hy' else site.address_ru if lang == 'ru' else site.address_en }}</p></div></div>
-      <div class="cinfo-item"><div class="cinfo-icon"><i class="ti ti-mail"></i></div><div><h3>Email</h3><p>{{ site.email }}</p></div></div>
-      <div class="cinfo-item"><div class="cinfo-icon"><i class="ti ti-phone"></i></div><div><h3>{{ t.form_phone }}</h3><p>{{ site.phone_main }}<br>{{ site.phone_second }}<br>{{ site.phone_third }}</p></div></div>
-      <div class="msg-row">
-        <a href="https://wa.me/{{ site.whatsapp_number }}"><i class="ti ti-brand-whatsapp"></i></a>
-        <a href="{{ site.telegram_link }}"><i class="ti ti-brand-telegram"></i></a>
+      <div class="cinfo-item">
+        <div class="cinfo-icon">
+          <i class="ti ti-map-pin"></i>
+        </div>
+        <div>
+          <h3>{{ t.address }}</h3>
+          <p>{{ site.address_hy if lang == 'hy' else site.address_ru if lang == 'ru' else site.address_en }}</p>
+        </div>
       </div>
-      <div class="mini-map">{{ site.address_hy if lang == 'hy' else site.address_ru if lang == 'ru' else site.address_en }}</div>
+
+      <div class="cinfo-item">
+        <div class="cinfo-icon">
+          <i class="ti ti-mail"></i>
+        </div>
+        <div>
+          <h3>Email</h3>
+          <p>
+            <a class="contact-link" href="mailto:{{ site.email }}">{{ site.email }}</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="cinfo-item">
+        <div class="cinfo-icon">
+          <i class="ti ti-phone"></i>
+        </div>
+        <div>
+          <h3>{{ t.form_phone }}</h3>
+          <p>
+            <a class="contact-link" href="tel:{{ site.phone_main|replace(' ', '') }}">{{ site.phone_main }}</a><br>
+            <a class="contact-link" href="tel:{{ site.phone_second|replace(' ', '') }}">{{ site.phone_second }}</a><br>
+            <a class="contact-link" href="tel:{{ site.phone_third|replace(' ', '') }}">{{ site.phone_third }}</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="msg-row">
+        <a href="https://wa.me/{{ site.whatsapp_number }}" target="_blank" rel="noopener">
+          <i class="ti ti-brand-whatsapp"></i>
+        </a>
+        <a href="{{ site.telegram_link }}" target="_blank" rel="noopener">
+          <i class="ti ti-brand-telegram"></i>
+        </a>
+      </div>
     </div>
 
     <form class="cform" method="post" action="{{ url('contacts') }}">
       <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
-      {% if form_sent %}<div class="success-banner">{{ t.form_success }}</div>{% endif %}
-      {% if form_error %}<div class="error-banner">{{ form_error }}</div>{% endif %}
+
+      {% if form_sent %}
+      <div class="success-banner">{{ t.form_success }}</div>
+      {% endif %}
+
+      {% if form_error %}
+      <div class="error-banner">{{ form_error }}</div>
+      {% endif %}
+
       <input class="finput" name="name" placeholder="{{ t.form_name }}" required>
       <input class="finput" name="company" placeholder="{{ t.form_company }}">
       <input class="finput" name="phone" placeholder="{{ t.form_phone }}" required>
       <input class="finput" name="email" placeholder="{{ t.form_email }}">
       <input class="finput" name="route" placeholder="{{ t.form_route }}">
       <textarea class="finput" name="message" placeholder="{{ t.form_message }}"></textarea>
+
       <button class="btn-glow" type="submit">{{ t.form_send }}</button>
     </form>
+
   </div>
 </section>
+
 {% endblock %}

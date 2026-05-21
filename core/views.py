@@ -3,6 +3,7 @@ from django.views.decorators.http import require_GET
 from .i18n import TRANSLATIONS, DEFAULT_LANG
 from .models import SiteSettings, PageContent, Stat, Service, RoutePoint, Partner, ValueItem, WorkStep, ContactRequest, FooterLink
 from .utils import tr, split_tags
+from datetime import datetime
 
 def get_settings():
     obj, _ = SiteSettings.objects.get_or_create(id=1)

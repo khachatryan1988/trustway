@@ -98,7 +98,14 @@ class RoutePoint(models.Model):
         return self.name_ru
 
 class Partner(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, default="Partner")
+
+    logo = models.ImageField(
+        upload_to="partners/",
+        blank=True,
+        null=True
+    )
+
     icon = models.CharField(max_length=100, default="ti-building")
     color = models.CharField(max_length=20, default="#f59e0b")
     sort_order = models.PositiveIntegerField(default=0)

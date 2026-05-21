@@ -70,8 +70,45 @@ class RoutePointAdmin(admin.ModelAdmin):
 
 @admin.register(Partner)
 class PartnerAdmin(admin.ModelAdmin):
-    list_display = ("name", "icon", "color", "sort_order", "is_active")
-    list_editable = ("icon", "color", "sort_order", "is_active")
+    list_display = ("id", "name", "logo_preview", "sort_order", "is_active")
+    list_editable = ("sort_order", "is_active")
+    search_fields = ("name",)
+    list_filter = ("is_active",)
+    readonly_fields = ("logo_preview",)
+
+    fieldsets = (
+        ("Partner", {
+            "fields": (
+                "name",
+                "logo",
+                "logo_preview",
+                "icon",
+                "color",
+                "sort_order",
+                "is_active",
+            )
+        }),
+    )
+
+    def logo_preview(self, obj):
+        if obj.logo:
+            return format_html(
+                '<img src="{}" style="height:45px; max-width:140px; object-fit:contain; background:#0b1224; padding:6px; border-radius:8px;" />',
+                obj.logo.url
+            )
+        return "-"
+
+    logo_preview.short_description = "Logo"
+
+    def logo_preview(self, obj):
+        if obj.logo:
+            return format_html(
+                '<img src="{}" style="height:45px; max-width:140px; object-fit:contain; background:#0b1224; padding:6px; border-radius:8px;" />',
+                obj.logo.url
+            )
+        return "-"
+
+    logo_preview.short_description = "Logo"
 
 @admin.register(ValueItem)
 class ValueItemAdmin(admin.ModelAdmin):

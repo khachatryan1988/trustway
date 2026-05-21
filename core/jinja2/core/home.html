@@ -81,9 +81,17 @@
   <div class="section-inner">
     <div class="sec-tag">{{ t.section_partners }}</div>
     <h2 class="sec-title">{{ t.section_partners }}</h2>
+
     <div class="partners-grid">
       {% for p in partners %}
-      <div class="partner-badge"><i class="ti {{ p.icon }}" style="color:{{ p.color }}"></i><span>{{ p.name }}</span></div>
+      <div class="partner-badge partner-logo-badge">
+        {% if p.logo %}
+        <img class="partner-logo-img" src="{{ p.logo.url }}" alt="{{ p.name }}">
+        {% else %}
+        <i class="ti {{ p.icon }}" style="color:{{ p.color }}"></i>
+        <span>{{ p.name }}</span>
+        {% endif %}
+      </div>
       {% endfor %}
     </div>
   </div>

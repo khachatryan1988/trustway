@@ -58,8 +58,10 @@
           {% endif %}
           <span>{{ site.logo_text }}</span>
         </div>
+
         <p>{{ site['footer_text_' ~ lang] if false else t.footer_text }}</p>
       </div>
+
       <div>
         <h4>{{ t.nav_home }}</h4>
 
@@ -69,13 +71,38 @@
         </a>
         {% endfor %}
       </div>
+
       <div>
         <h4>{{ t.nav_contacts }}</h4>
-        <p>{{ site.phone_main }}</p>
-        <p>{{ site.email }}</p>
+
+        {% if site.phone_main %}
+        <p>
+          <a class="footer-contact-link" href="tel:{{ site.phone_main }}">
+            {{ site.phone_main }}
+          </a>
+        </p>
+        {% endif %}
+
+        {% if site.email %}
+        <p>
+          <a class="footer-contact-link" href="mailto:{{ site.email }}">
+            {{ site.email }}
+          </a>
+        </p>
+        {% endif %}
       </div>
     </div>
-    <div class="footer-bottom">© 2026 Trust Way LLC</div>
+
+    <div class="footer-bottom">
+      © {{ current_year }}
+      {% if lang == 'hy' %}
+      Trust Way ՍՊԸ․ Բոլոր իրավունքները պաշտպանված են
+      {% elif lang == 'ru' %}
+      Trust Way ООО. Все права защищены
+      {% else %}
+      Trust Way LLC. All rights reserved
+      {% endif %}
+    </div>
   </footer>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="{{ static('js/app.js') }}"></script>
