@@ -14,6 +14,12 @@ class SiteSettingsAdmin(admin.ModelAdmin):
 class PageContentAdmin(admin.ModelAdmin):
     list_display = ("key", "title_ru", "title_hy", "title_en")
     search_fields = ("key", "title_ru", "title_hy", "title_en")
+    fieldsets = (
+        ("Page", {"fields": ("key", "image")}),
+        ("HY", {"fields": ("title_hy", "subtitle_hy", "body_hy")}),
+        ("RU", {"fields": ("title_ru", "subtitle_ru", "body_ru")}),
+        ("EN", {"fields": ("title_en", "subtitle_en", "body_en")}),
+    )
 
 @admin.register(Stat)
 class StatAdmin(admin.ModelAdmin):
