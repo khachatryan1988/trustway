@@ -22,6 +22,26 @@ function initMenu() {
   });
 }
 
+function initLangDropdown() {
+  const btn = document.getElementById("langBtn");
+  const menu = document.getElementById("langMenu");
+
+  if (!btn || !menu) return;
+
+  btn.addEventListener("click", function (e) {
+    e.stopPropagation();
+    menu.classList.toggle("open");
+  });
+
+  document.addEventListener("click", function () {
+    menu.classList.remove("open");
+  });
+
+  menu.addEventListener("click", function (e) {
+    e.stopPropagation();
+  });
+}
+
 function initOldSvgMapTooltip() {
   const tooltip = document.getElementById("map-tooltip");
   if (!tooltip) return;
@@ -55,7 +75,7 @@ function initOldSvgMapTooltip() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+function initLeafletRouteMap() {
   const el = document.getElementById("leaflet-route-map");
   if (!el || typeof L === "undefined") return;
 
@@ -77,7 +97,8 @@ document.addEventListener("DOMContentLoaded", function () {
     .map(p => ({
       name: lang === "hy" ? p.name_hy : lang === "ru" ? p.name_ru : p.name_en,
       lat: Number(p.lat),
-      lng: Number(p.lng)
+      lng: Number(p.lng),
+      name_en: p.name_en
     }));
 
   if (!points.length) return;
@@ -90,6 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     for (let i = 0; i <= 70; i++) {
       const t = i / 70;
+
       const lat =
         (1 - t) * (1 - t) * from.lat +
         2 * (1 - t) * t * ((from.lat + to.lat) / 2 + offset) +
@@ -102,6 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       arr.push([lat, lng]);
     }
+
     return arr;
   }
 
@@ -143,4 +166,12 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   setTimeout(() => map.invalidateSize(), 300);
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  initNavbar();
+  initMenu();
+  initLangDropdown();
+  initOldSvgMapTooltip();
+  initLeafletRouteMap();
 });

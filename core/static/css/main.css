@@ -370,3 +370,64 @@
 .jctrans-logo span{
   color:#FA7331;
 }
+.nav-actions{
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+
+.lang-dropdown{
+  position:relative;
+  z-index:10000;
+}
+
+.lang-select-btn{
+  height:46px;
+  padding:0 16px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.06);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  cursor:pointer;
+  font-weight:700;
+}
+
+.lang-select-btn .ti-world{
+  color:#f59e0b;
+  font-size:20px;
+}
+
+.lang-menu{
+  position:absolute;
+  right:0;
+  top:56px;
+  min-width:150px;
+  padding:8px;
+  border-radius:16px;
+  background:#101827;
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 18px 50px rgba(0,0,0,.35);
+  display:none;
+}
+
+.lang-menu.open{
+  display:block;
+}
+
+.lang-menu a{
+  display:block;
+  padding:10px 12px;
+  border-radius:12px;
+  color:#b8c3d9;
+  text-decoration:none;
+  font-weight:700;
+}
+
+.lang-menu a:hover,
+.lang-menu a.active{
+  color:#fff;
+  background:rgba(245,158,11,.14);
+}

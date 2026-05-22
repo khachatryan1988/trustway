@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.decorators.http import require_GET
+from django.conf import settings
+from django.core.mail import send_mail
 from .i18n import TRANSLATIONS, DEFAULT_LANG
 from .models import SiteSettings, PageContent, Stat, Service, RoutePoint, Partner, ValueItem, WorkStep, ContactRequest, FooterLink
 from .utils import tr, split_tags
@@ -50,21 +52,56 @@ def services_view(request):
 def contacts_view(request):
     ctx = common_context("contacts")
     ctx.update({"page": get_page("contacts"), "form_sent": False, "form_error": None})
+
     if request.method == "POST":
         name = request.POST.get("name", "").strip()
+        company = request.POST.get("company", "").strip()
         phone = request.POST.get("phone", "").strip()
+        email = request.POST.get("email", "").strip()
+        route = request.POST.get("route", "").strip()
+        message_text = request.POST.get("message", "").strip()
+
         if not name or not phone:
             ctx["form_error"] = "Name and phone are required"
         else:
-            ContactRequest.objects.create(
-                name=name,
-                company=request.POST.get("company", "").strip(),
-                phone=phone,
-                email=request.POST.get("email", "").strip(),
-                route=request.POST.get("route", "").strip(),
-                message=request.POST.get("message", "").strip(),
-            )
-            ctx["form_sent"] = True
+            try:
+                ContactRequest.objects.create(
+                    name=name,
+                    company=company,
+                    phone=phone,
+                    email=email,
+                    route=route,
+                    message=message_text,
+                )
+
+                subject = "New request from Trust Way website"
+
+                body = f"""
+New request from Trust Way website
+
+Name: {name}
+Company: {company}
+Phone: {phone}
+Email: {email}
+Route: {route}
+
+Message:
+{message_text}
+"""
+
+                send_mail(
+                    subject,
+                    body,
+                    settings.DEFAULT_FROM_EMAIL,
+                    ["logistics@trustway.am"],
+                    fail_silently=False,
+                )
+
+                ctx["form_sent"] = True
+
+            except Exception as e:
+                ctx["form_error"] = str(e)
+
     return render(request, "core/contacts.html", ctx)
 
 @require_GET

@@ -20,30 +20,47 @@
   {% block meta %}{% endblock %}
 </head>
 <body>
-  <div class="lang-bar">
-    {% for code, label in languages %}
-      <a href="{{ url('set_lang', args=[code]) }}" class="lang-btn{{ ' active' if lang == code }}">{{ label }}</a>
-    {% endfor %}
-  </div>
+<nav class="navbar solid" id="navbar">
+  <a href="{{ url('home') }}" class="brand">
+    {% if site.logo_image %}
+    <img src="{{ site.logo_image.url }}" alt="{{ site.logo_text }}" class="brand-logo">
+    {% else %}
+    <span class="brand-mark">TW</span>
+    {% endif %}
+    <span>{{ site.logo_text }}</span>
+  </a>
 
-  <nav class="navbar solid" id="navbar">
-    <a href="{{ url('home') }}" class="brand">
-      {% if site.logo_image %}
-      <img src="{{ site.logo_image.url }}" alt="{{ site.logo_text }}" class="brand-logo">
-      {% else %}
-      <span class="brand-mark">TW</span>
-      {% endif %}
-      <span>{{ site.logo_text }}</span>
-    </a>
-    <button class="menu-btn" id="menu-btn"><i class="ti ti-menu-2"></i></button>
-    <ul class="nav-links" id="nav-links">
-      <li><a class="{{ 'active' if active_page == 'home' }}" href="{{ url('home') }}">{{ t.nav_home }}</a></li>
-      <li><a class="{{ 'active' if active_page == 'about' }}" href="{{ url('about') }}">{{ t.nav_about }}</a></li>
-      <li><a class="{{ 'active' if active_page == 'services' }}" href="{{ url('services') }}">{{ t.nav_services }}</a></li>
-      <li><a class="{{ 'active' if active_page == 'contacts' }}" href="{{ url('contacts') }}">{{ t.nav_contacts }}</a></li>
-    </ul>
+  <button class="menu-btn" id="menu-btn"><i class="ti ti-menu-2"></i></button>
+
+  <ul class="nav-links" id="nav-links">
+    <li><a class="{{ 'active' if active_page == 'home' }}" href="{{ url('home') }}">{{ t.nav_home }}</a></li>
+    <li><a class="{{ 'active' if active_page == 'about' }}" href="{{ url('about') }}">{{ t.nav_about }}</a></li>
+    <li><a class="{{ 'active' if active_page == 'services' }}" href="{{ url('services') }}">{{ t.nav_services }}</a></li>
+    <li><a class="{{ 'active' if active_page == 'contacts' }}" href="{{ url('contacts') }}">{{ t.nav_contacts }}</a></li>
+  </ul>
+
+  <div class="nav-actions">
+    <div class="lang-dropdown">
+      <button class="lang-select-btn" type="button" id="langBtn">
+        <i class="ti ti-world"></i>
+        <span>
+            {% if lang == 'hy' %}Հայ{% elif lang == 'ru' %}Рус{% else %}Eng{% endif %}
+          </span>
+        <i class="ti ti-chevron-down"></i>
+      </button>
+
+      <div class="lang-menu" id="langMenu">
+        {% for code, label in languages %}
+        <a href="{{ url('set_lang', args=[code]) }}" class="{{ 'active' if lang == code }}">
+          {{ label }}
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+
     <a class="nav-cta" href="{{ url('contacts') }}">{{ t.btn_contact }}</a>
-  </nav>
+  </div>
+</nav>
 
   {% block content %}{% endblock %}
 

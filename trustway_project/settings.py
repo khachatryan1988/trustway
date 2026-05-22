@@ -76,3 +76,12 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "mail.trustway.am"
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+EMAIL_HOST_USER = "logistics@trustway.am"
+EMAIL_HOST_PASSWORD = "ТУТ_ПАРОЛЬ_ОТ_ПОЧТЫ"
+DEFAULT_FROM_EMAIL = "logistics@trustway.am"
+CONTACT_TO_EMAIL = "logistics@trustway.am"
