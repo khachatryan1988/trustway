@@ -4,12 +4,53 @@ from .models import SiteSettings, PageContent, Stat, Service, RoutePoint, Partne
 
 @admin.register(SiteSettings)
 class SiteSettingsAdmin(admin.ModelAdmin):
+    readonly_fields = ("jctrans_logo_preview",)
+
     fieldsets = (
-        ("Brand", {"fields": ("logo_text", "logo_image", "favicon")}),
-        ("Contacts", {"fields": ("phone_main", "phone_second", "phone_third", "email", "whatsapp_number", "telegram_link")}),
-        ("Address", {"fields": ("address_hy", "address_ru", "address_en")}),
-        ("Footer", {"fields": ("footer_text_hy", "footer_text_ru", "footer_text_en")}),
+        ("Brand", {
+            "fields": (
+                "logo_text",
+                "logo_image",
+                "favicon",
+                "jctrans_logo",
+                "jctrans_logo_preview",
+            )
+        }),
+        ("Contacts", {
+            "fields": (
+                "phone_main",
+                "phone_second",
+                "phone_third",
+                "email",
+                "whatsapp_number",
+                "telegram_link",
+            )
+        }),
+        ("Address", {
+            "fields": (
+                "address_hy",
+                "address_ru",
+                "address_en",
+            )
+        }),
+        ("Footer", {
+            "fields": (
+                "footer_text_hy",
+                "footer_text_ru",
+                "footer_text_en",
+            )
+        }),
     )
+
+    def jctrans_logo_preview(self, obj):
+        if obj.jctrans_logo:
+            return format_html(
+                '<img src="{}" style="height:70px; max-width:280px; object-fit:contain; background:#0b1224; padding:10px; border-radius:10px;" />',
+                obj.jctrans_logo.url
+            )
+        return "-"
+
+    jctrans_logo_preview.short_description = "JCTRANS logo preview"
 
 @admin.register(PageContent)
 class PageContentAdmin(admin.ModelAdmin):

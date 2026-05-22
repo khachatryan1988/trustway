@@ -43,8 +43,18 @@
 
 <section class="section">
   <div class="section-inner jctrans-band">
-    <div><h2>{{ t.member_title }}</h2><p>{{ t.member_desc }}</p></div>
-    <div class="jctrans-logo">JCTRANS</div>
+    <div>
+      <h2>{{ t.member_title }}</h2>
+      <p>{{ t.member_desc }}</p>
+    </div>
+
+    <div class="jctrans-logo">
+      {% if site.jctrans_logo %}
+      <img src="{{ site.jctrans_logo.url }}" alt="JCTRANS" class="jctrans-logo-img">
+      {% else %}
+      <span>JCTRANS</span>
+      {% endif %}
+    </div>
   </div>
 </section>
 {% endblock %}

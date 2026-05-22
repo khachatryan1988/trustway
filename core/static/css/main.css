@@ -316,3 +316,57 @@
 .footer-contact-link:hover{
   color:#ffffff;
 }
+.jctrans-logo{
+  width: 270px;
+  min-height: 110px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.jctrans-logo img{
+  max-width:240px;
+  max-height:80px;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+  display:block;
+}
+
+.jctrans-logo span{
+  color:#f59e0b;
+  font-size:38px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+.jctrans-logo-mask{
+  width:280px;
+  height:90px;
+  display:block;
+  background:#FA7331;
+
+  -webkit-mask-repeat:no-repeat;
+  mask-repeat:no-repeat;
+
+  -webkit-mask-position:center;
+  mask-position:center;
+
+  -webkit-mask-size:contain;
+  mask-size:contain;
+}
+
+.jctrans-logo span{
+  color:#FA7331;
+}
+.jctrans-logo-img{
+  max-width:280px;
+  max-height:90px;
+  object-fit:contain;
+  display:block;
+  filter: invert(55%) sepia(84%) saturate(2034%) hue-rotate(340deg) brightness(103%) contrast(96%);
+}
+
+.jctrans-logo span{
+  color:#FA7331;
+}
