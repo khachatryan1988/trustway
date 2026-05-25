@@ -75,3 +75,86 @@ footer{padding:60px 7% 24px;background:var(--dark)}.footer-inner{max-width:1180p
 
 /* SMALL MOBILE */
 @media(max-width:520px){.navbar{padding:0 12px}.brand-logo{width:74px;height:52px}.menu-btn{font-size:25px}.lang-select-btn{padding:0 10px}.lang-select-btn span{max-width:38px;overflow:hidden;white-space:nowrap}.hero h1{font-size:34px}.hero-stats{grid-template-columns:1fr}.hero-actions{flex-direction:column;align-items:flex-start}.hero-actions .btn-glow,.hero-actions .btn-ghost{width:100%;max-width:260px}.sec-title{font-size:30px}.page-hero h1{font-size:34px}.partners-grid{gap:12px}.partner-logo-img{max-width:130px}.contact-hero-map{height:300px}.leaflet-route-map,#leaflet-route-map{height:360px}.cinfo-item{padding:18px}.jctrans-logo-img,.jctrans-logo img{max-width:220px}}
+
+
+.footer-contact-line{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-top:14px;
+    flex-wrap:wrap;
+}
+
+.footer-socials{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.footer-social-btn{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    position:relative;
+    transition:.25s ease;
+    flex-shrink:0;
+    box-shadow:0 8px 20px rgba(0,0,0,.22);
+}
+
+
+.footer-social-btn i{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    color:#fff;
+    font-size:20px;
+    line-height:1;
+}
+
+.footer-social-btn:hover{
+    transform:translateY(-3px) scale(1.06);
+}
+
+/* WhatsApp */
+.footer-social-btn.whatsapp{
+    background:linear-gradient(135deg,#2FE56D,#25D366);
+}
+
+/* Telegram */
+.footer-social-btn.telegram{
+    background:linear-gradient(135deg,#37B7FF,#229ED9);
+}
+
+/* Viber */
+.footer-social-btn.viber{
+    background:linear-gradient(135deg,#8B5CF6,#7360F2);
+}
+
+.phone-link{
+    white-space:nowrap;
+    font-size:18px;
+    font-weight:500;
+    color:#b7c8ff;
+    text-decoration:none;
+}
+
+.phone-link:hover{
+    color:#fff;
+}
+
+.footer-email{
+    display:inline-block;
+    margin-top:16px;
+    color:#8ea7ff;
+    text-decoration:none;
+    transition:.2s;
+}
+
+.footer-email:hover{
+    color:#fff;
+}

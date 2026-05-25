@@ -92,20 +92,50 @@
       <div>
         <h4>{{ t.nav_contacts }}</h4>
 
-        {% if site.phone_main %}
-        <p>
-          <a class="footer-contact-link" href="tel:{{ site.phone_main }}">
+        <div class="footer-contact-line">
+
+          {% if site.phone_main %}
+          <a class="footer-contact-link phone-link" href="tel:{{ site.phone_main }}">
             {{ site.phone_main }}
           </a>
-        </p>
-        {% endif %}
+          {% endif %}
+
+          <div class="footer-socials">
+
+            {% if site.whatsapp_number %}
+            <a
+                    href="https://wa.me/{{ site.whatsapp_number }}"
+                    target="_blank"
+                    class="footer-social-btn whatsapp">
+              <i class="ti ti-brand-whatsapp"></i>
+            </a>
+            {% endif %}
+
+            {% if site.telegram_link %}
+            <a
+                    href="{{ site.telegram_link }}"
+                    target="_blank"
+                    class="footer-social-btn telegram">
+              <i class="ti ti-brand-telegram"></i>
+            </a>
+            {% endif %}
+
+<!--            {% if site.phone_main %}-->
+<!--            <a-->
+<!--                    href="viber://chat?number={{ site.phone_main|replace(' ', '') }}"-->
+<!--                    class="footer-social-btn viber">-->
+<!--              <i class="ti ti-brand-viber"></i>-->
+<!--            </a>-->
+<!--            {% endif %}-->
+
+          </div>
+
+        </div>
 
         {% if site.email %}
-        <p>
-          <a class="footer-contact-link" href="mailto:{{ site.email }}">
-            {{ site.email }}
-          </a>
-        </p>
+        <a class="footer-contact-link footer-email" href="mailto:{{ site.email }}">
+          {{ site.email }}
+        </a>
         {% endif %}
       </div>
     </div>
