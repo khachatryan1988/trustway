@@ -82,12 +82,27 @@ MEDIA_ROOT = BASE_DIR / "media"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+# EMAIL_HOST = "smtp.office365.com"
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_USE_SSL = False
+# EMAIL_HOST_USER = "info@trustway.am"
+# EMAIL_HOST_PASSWORD = "F.518390835660oh"
+# DEFAULT_FROM_EMAIL = "info@trustway.am"
+# CONTACT_TO_EMAIL = "info@trustway.am"
+
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "smtp.office365.com"
+
+EMAIL_HOST = "smtp-relay.brevo.com"
 EMAIL_PORT = 587
+
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
-EMAIL_HOST_USER = "info@trustway.am"
-EMAIL_HOST_PASSWORD = "F.518390835660oh"
+
+EMAIL_HOST_USER = "ac7950001@smtp-brevo.com"
+EMAIL_HOST_PASSWORD = "PxCEr0cXkWjmG9Vz"
+
 DEFAULT_FROM_EMAIL = "info@trustway.am"
+
 CONTACT_TO_EMAIL = "info@trustway.am"
