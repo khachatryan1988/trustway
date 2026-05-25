@@ -93,7 +93,7 @@ Message:
                     subject,
                     body,
                     settings.DEFAULT_FROM_EMAIL,
-                    ["logistics@trustway.am"],
+                    ["info@trustway.am"],
                     fail_silently=False,
                 )
 
