@@ -65,14 +65,14 @@ def contacts_view(request):
             ctx["form_error"] = "Name and phone are required"
         else:
             try:
-                ContactRequest.objects.create(
-                    name=name,
-                    company=company,
-                    phone=phone,
-                    email=email,
-                    route=route,
-                    message=message_text,
-                )
+                # ContactRequest.objects.create(
+                #     name=name,
+                #     company=company,
+                #     phone=phone,
+                #     email=email,
+                #     route=route,
+                #     message=message_text,
+                # )
 
                 subject = "New request from Trust Way website"
 
