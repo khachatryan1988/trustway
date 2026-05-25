@@ -6,6 +6,11 @@ SECRET_KEY = "dev-secret-key-change-in-production"
 DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://trustway.am",
+    "https://www.trustway.am",
+]
+
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
