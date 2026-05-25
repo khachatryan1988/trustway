@@ -101,7 +101,7 @@ EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
 EMAIL_HOST_USER = "ac7950001@smtp-brevo.com"
-EMAIL_HOST_PASSWORD = "PxCEr0cXkWjmG9Vz"
+EMAIL_HOST_PASSWORD = "PxCEr0cXkWjmG9vz"
 
 DEFAULT_FROM_EMAIL = "info@trustway.am"
 
