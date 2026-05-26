@@ -21,7 +21,7 @@
 
 <section class="section">
     <div class="section-inner text-page">
-        {{ page_body|safe }}
+        {{ page_body|replace('\n', '<br>')|safe }}
     </div>
 </section>
 {% endblock %}
