@@ -1,22 +1,27 @@
 {% extends 'core/base.html' %}
 
-{% block title %}Trust Way — {{ page.title_hy if lang == 'hy' else page.title_ru if lang == 'ru' else page.title_en }}{% endblock %}
+{% set page_title = page.title_hy if lang == 'hy' else page.title_ru if lang == 'ru' else page.title_en %}
+{% set page_subtitle = page.subtitle_hy if lang == 'hy' else page.subtitle_ru if lang == 'ru' else page.subtitle_en %}
+{% set page_body = page.body_hy if lang == 'hy' else page.body_ru if lang == 'ru' else page.body_en %}
+
+{% block title %}Trust Way — {{ page_title }}{% endblock %}
 
 {% block content %}
-<section class="page-hero">
+<section class="page-hero text-page-hero">
     <div class="breadcrumb">
-        <a href="{{ url('home') }}">{{ t.nav_home }}</a> /
-        {{ page.title_hy if lang == 'hy' else page.title_ru if lang == 'ru' else page.title_en }}
+        <a href="{{ url('home') }}">{{ t.nav_home }}</a> / {{ page_title }}
     </div>
 
-    <h1>{{ page.title_hy if lang == 'hy' else page.title_ru if lang == 'ru' else page.title_en }}</h1>
+    <h1>{{ page_title }}</h1>
 
-    <p>{{ page.subtitle_hy if lang == 'hy' else page.subtitle_ru if lang == 'ru' else page.subtitle_en }}</p>
+    {% if page_subtitle %}
+    <p>{{ page_subtitle }}</p>
+    {% endif %}
 </section>
 
 <section class="section">
     <div class="section-inner text-page">
-        {{ page.body_hy if lang == 'hy' else page.body_ru if lang == 'ru' else page.body_en }}
+        {{ page_body|safe }}
     </div>
 </section>
 {% endblock %}

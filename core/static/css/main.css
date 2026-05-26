@@ -164,3 +164,35 @@ footer{padding:60px 7% 24px;background:var(--dark)}.footer-inner{max-width:1180p
     border-radius:var(--r2);
     padding:24px;
 }
+.text-page{
+    max-width: 980px;
+    margin: 0 auto;
+
+    font-size: 18px;
+    line-height: 1.9;
+    color: var(--text);
+
+    word-break: break-word;
+}
+
+.text-page p{
+    margin-bottom: 24px;
+}
+
+.text-page h2,
+.text-page h3{
+    margin-top: 42px;
+    margin-bottom: 18px;
+
+    line-height: 1.25;
+}
+
+.text-page ul,
+.text-page ol{
+    padding-left: 24px;
+    margin-bottom: 24px;
+}
+
+.text-page li{
+    margin-bottom: 12px;
+}
