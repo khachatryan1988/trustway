@@ -19,13 +19,13 @@
 
 <section class="section">
   <div class="section-inner about-grid">
-    <div class="about-visual">
-      {% if page and page.content_image %}
-      <img src="{{ page.content_image.url }}" alt="{{ page.title_hy if lang == 'hy' else page.title_ru if lang == 'ru' else page.title_en }}" class="about-image">
-      {% else %}
-      <div class="diamond-shape">TW</div>
-      {% endif %}
-    </div>
+<!--    <div class="about-visual">-->
+<!--      {% if page and page.content_image %}-->
+<!--      <img src="{{ page.content_image.url }}" alt="{{ page.title_hy if lang == 'hy' else page.title_ru if lang == 'ru' else page.title_en }}" class="about-image">-->
+<!--      {% else %}-->
+<!--      <div class="diamond-shape">TW</div>-->
+<!--      {% endif %}-->
+<!--    </div>-->
     <div class="about-text">
       <p>{{ page.body_hy if lang == 'hy' and page else page.body_ru if lang == 'ru' and page else page.body_en if page else t.about_p1 }}</p>
       <div class="values-grid">
