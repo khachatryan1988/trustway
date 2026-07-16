@@ -35,18 +35,18 @@
   </div>
 </section>
 
-<section class="section dark-section">
-  <div class="section-inner">
-    <h2 class="sec-title">{{ t.how_title }}</h2>
-    <div class="steps-grid">
-      {% for step in steps %}
-      <div class="step-card">
-        <div class="step-num">{{ step.num }}</div>
-        <h3>{{ step.name_hy if lang == 'hy' else step.name_ru if lang == 'ru' else step.name_en }}</h3>
-        <p>{{ step.desc_hy if lang == 'hy' else step.desc_ru if lang == 'ru' else step.desc_en }}</p>
-      </div>
-      {% endfor %}
-    </div>
-  </div>
-</section>
+<!--<section class="section dark-section">-->
+<!--  <div class="section-inner">-->
+<!--    <h2 class="sec-title">{{ t.how_title }}</h2>-->
+<!--    <div class="steps-grid">-->
+<!--      {% for step in steps %}-->
+<!--      <div class="step-card">-->
+<!--        <div class="step-num">{{ step.num }}</div>-->
+<!--        <h3>{{ step.name_hy if lang == 'hy' else step.name_ru if lang == 'ru' else step.name_en }}</h3>-->
+<!--        <p>{{ step.desc_hy if lang == 'hy' else step.desc_ru if lang == 'ru' else step.desc_en }}</p>-->
+<!--      </div>-->
+<!--      {% endfor %}-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</section>-->
 {% endblock %}
